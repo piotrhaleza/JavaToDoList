@@ -23,7 +23,7 @@ public class LoginFrame extends AbstractFrame {
         final Dimension dimension = new Dimension(300,40);
 
 
-        loginInput =  InputWithPlaceholder.createTextFieldInput("Login").getInputComponent();
+        loginInput =  InputWithPlaceholder.createTextFieldInput("Login");
 
 
 
@@ -31,7 +31,7 @@ public class LoginFrame extends AbstractFrame {
         loginInput.setHorizontalAlignment(SwingConstants.CENTER);
 
 
-        passwordInput = InputWithPlaceholder.createPasswordFieldInput("Hasło").getInputComponent();
+        passwordInput = InputWithPlaceholder.createPasswordFieldInput("Hasło");
         passwordInput.setSize(dimension);
         passwordInput.setHorizontalAlignment(SwingConstants.CENTER);
 

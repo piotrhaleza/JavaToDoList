@@ -22,8 +22,8 @@ public class InputWithPlaceholder<T extends JTextComponent>{
     public InputWithPlaceholder(final String placeholder, T inputComponent){
 
         //Check for the null exception
-        if(inputComponent==null){
-            throw new IllegalArgumentException("input component cannot be null");
+        if(inputComponent==null || placeholder.isEmpty()){
+            throw new IllegalArgumentException("Arguments cannot be empty");
         }
         this.inputComponent = inputComponent;
         this.inputChanged = false;
@@ -81,17 +81,18 @@ public class InputWithPlaceholder<T extends JTextComponent>{
         });
     }
 
-    public T getInputComponent() {
-        return inputComponent;
-    }
-
     // Factory method for creating a PlaceholderInput specified as JTextField
-    public static InputWithPlaceholder<JTextField> createTextFieldInput(String placeholder) {
-        return new InputWithPlaceholder<>(placeholder, new JTextField());
+    public static JTextField createTextFieldInput(String placeholder) {
+        return new InputWithPlaceholder<>(placeholder, new JTextField()).getInputComponent();
     }
 
     // Factory method for creating a PlaceholderInput specified as JPasswordField
-    public static InputWithPlaceholder<JPasswordField> createPasswordFieldInput(String placeholder) {
-        return new InputWithPlaceholder<>(placeholder, new JPasswordField());
+    public static JPasswordField createPasswordFieldInput(String placeholder) {
+        return new InputWithPlaceholder<>(placeholder, new JPasswordField()).getInputComponent();
+    }
+
+
+    private T getInputComponent() {
+        return inputComponent;
     }
 }
