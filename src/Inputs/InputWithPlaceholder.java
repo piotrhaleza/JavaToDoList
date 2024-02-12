@@ -22,8 +22,12 @@ public class InputWithPlaceholder<T extends JTextComponent>{
     public InputWithPlaceholder(final String placeholder, T inputComponent){
 
         //Check for the null exception
-        if(inputComponent==null || placeholder.isEmpty()){
-            throw new IllegalArgumentException("Arguments cannot be empty");
+        if(inputComponent==null) {
+            throw new IllegalArgumentException("input component cannot be null");
+        }
+        //Check for empty placeholder exception
+        if(placeholder.isEmpty()){
+            throw new IllegalArgumentException("Placeholder cannot be empty");
         }
         this.inputComponent = inputComponent;
         this.inputChanged = false;
@@ -31,12 +35,13 @@ public class InputWithPlaceholder<T extends JTextComponent>{
 
         inputComponent.setText(placeholder);
 
-        //Sets text to be visible if input type is Password
+
+
         setPasswordMask(DEFAULT_ECHO_CHAR);
 
         // Set listener to detect if user changed the input manually
-       addKeyEventListener();
-       addFocusEventListener();
+       addKeyListenerToInput();
+       addFocusListenerToInput();
 
     }
 
@@ -49,7 +54,7 @@ public class InputWithPlaceholder<T extends JTextComponent>{
     }
 
     //Add key listener in order to check if User provided changes to input
-    private void addKeyEventListener() {
+    private void addKeyListenerToInput() {
         inputComponent.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -60,7 +65,7 @@ public class InputWithPlaceholder<T extends JTextComponent>{
 
     //Check if input is focused or not, then perform methods based on input type and input value.
     //If user provided any changes before focus nothing happens
-    private void addFocusEventListener() {
+    private void addFocusListenerToInput() {
         inputComponent.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {

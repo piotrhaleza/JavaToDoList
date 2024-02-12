@@ -2,43 +2,79 @@ package Frames;
 
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import Inputs.InputWithPlaceholder;
 
 
 public class LoginFrame extends AbstractFrame {
 
-    // Creates frame with specific title
+    private JPanel inputPanel;
+    private JPanel buttonsPanel;
     private JTextField loginInput;
     private JPasswordField passwordInput;
+    private JButton submitBtn;
+    private JButton showRegisterBtn;
+    private JButton continueAsGuestBtn;
+
+    private JLabel Header;
+
+    private final Dimension dimension = new Dimension(250,40);
+
 
     public LoginFrame(String title){
         super(title);
-        final Dimension dimension = new Dimension(300,40);
+
+        submitBtn = new JButton("Zaloguj się");
 
 
+        showRegisterBtn = new JButton("Zarejestruj się");
+
+        continueAsGuestBtn = new JButton("Kontynuuj jako gość");
+
+
+        //Panels
+        inputPanel = new JPanel();
+        inputPanel.setLayout(new GridLayout(2,1,0,2));
+
+        buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        buttonsPanel.setPreferredSize(new Dimension(250,70));
+
+        //Inputs setup
         loginInput =  InputWithPlaceholder.createTextFieldInput("Login");
-
-
-
         loginInput.setPreferredSize(dimension);
         loginInput.setHorizontalAlignment(SwingConstants.CENTER);
 
 
         passwordInput = InputWithPlaceholder.createPasswordFieldInput("Hasło");
-        passwordInput.setSize(dimension);
+        passwordInput.setPreferredSize(dimension);
         passwordInput.setHorizontalAlignment(SwingConstants.CENTER);
 
-        this.setLayout(new GridLayout(3,1));
-        this.add(loginInput);
-        this.add(passwordInput);
-        // Sets the size of frame to its elements
+        //Buttons setup
+
+
+        //Add elements to panels
+        inputPanel.add(loginInput);
+        inputPanel.add(passwordInput);
+
+        buttonsPanel.add(submitBtn);
+        buttonsPanel.add(showRegisterBtn);
+        buttonsPanel.add(continueAsGuestBtn);
+
+        //Set up the frame
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        this.add(inputPanel);
+        this.add(buttonsPanel);
+       // this.add(submitBtn);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null); // Center the frame on the screen
+
         this.pack();
+
+
+
     }
 }
