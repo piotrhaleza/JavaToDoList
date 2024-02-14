@@ -19,7 +19,7 @@ public class InputWithPlaceholder<T extends JTextComponent>{
     private final T inputComponent;
     private final String placeholder;
 
-    public InputWithPlaceholder(final String placeholder, T inputComponent){
+    private InputWithPlaceholder(final String placeholder, T inputComponent){
 
         //Check for the null exception
         if(inputComponent==null) {

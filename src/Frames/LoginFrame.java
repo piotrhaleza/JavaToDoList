@@ -17,43 +17,47 @@ import org.intellij.lang.annotations.Flow;
 
 public class LoginFrame extends AbstractFrame {
 
-    private JPanel inputPanel;
-    private JPanel buttonsPanel;
-    private JTextField loginInput;
-    private JPasswordField passwordInput;
-    private JPasswordField repeatPasswordInput;
-    private JButton submitBtn;
-    private JButton switchFormBtn;
-    private JButton continueAsGuestBtn;
-
-    private JLabel Header;
-
-    private final Dimension dimension = new Dimension(250,40);
+    private static final String loginView = "LoginPanel";
+    private static final String registerView = "RegisterPanel";
+    static CardLayout cl;
+    static JPanel containerPanel;
 
 
+    public LoginFrame(){}
     public LoginFrame(String title){
         super(title);
-        CardLayout cl = new CardLayout();
+        cl = new CardLayout();
 
-        JPanel containerPanel = new JPanel();
+        containerPanel = new JPanel();
         containerPanel.setLayout(cl);
-        containerPanel.add(new LoginPanel(), "LoginPanel");
-        containerPanel.add(new RegisterPanel(), "RegisterPanel");
-        cl.show(containerPanel, "LoginPanel");
+        containerPanel.add(new LoginPanel(), loginView);
+
+        containerPanel.add(new RegisterPanel(), registerView);
+
+        cl.show(containerPanel, loginView);
 
 
         //Set up the frame
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20));
+        this.setLayout(new BorderLayout());
         this.add(containerPanel);
-        //this.add(inputPanel);
-       // this.add(buttonsPanel);
-       // this.add(submitBtn);
-        this.setResizable(false);
+       //this.setResizable(false);
+        this.setMinimumSize(new Dimension(250,250));
         this.setLocationRelativeTo(null); // Center the frame on the screen
 
         this.pack();
 
 
+    }
+
+    public static void switchToLoginView(){
+        cl.show(containerPanel, loginView);
 
     }
+    public static void switchToRegisterView(){
+        cl.show(containerPanel, registerView);
+
+    }
+
+
+
 }

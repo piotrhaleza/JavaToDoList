@@ -1,5 +1,7 @@
 package Panels.Auth;
 
+import Frames.LoginFrame;
+
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
@@ -10,13 +12,7 @@ public class LoginPanel extends AbstractAuthPanel{
 
     private final int GRID_LAYOUT_ROWS = 2;
     private final int GRID_LAYOUT_COLS = 1;
-    private JPanel inputPanel;
-    private JPanel buttonsPanel;
-    private JTextField loginInput;
-    private JPasswordField passwordInput;
-    private JButton submitBtn;
-    private JButton switchFormBtn;
-    private JButton continueAsGuestBtn;
+
     public LoginPanel(){
         createPanel();
     }
@@ -31,18 +27,28 @@ public class LoginPanel extends AbstractAuthPanel{
 
         this.setLayout(new GridLayout(GRID_LAYOUT_ROWS, GRID_LAYOUT_COLS));
 
-        submitBtn = createStyledBtn("Zaloguj się");
-        switchFormBtn = createStyledBtn("Zarejestruj się");
-        continueAsGuestBtn = createStyledBtn("Kontynuuj jako gość");
-        ArrayList<JButton> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
-        buttonsPanel = createBtnPanel(btnList);
+        submitBtn = new JButton("Zaloguj się");
+
+        switchFormBtn = new JButton("Zarejestruj się");
+        //Switch the LoginFrame view to register panel
+        switchFormBtn.addActionListener(e -> switchView());
+
+        continueAsGuestBtn = new JButton("Kontynuuj jako gość");
+        ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
+        buttonsPanel = createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
 
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
-        ArrayList<JTextComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
-        inputPanel = createInputPanel(inputList);
+        ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
+        inputPanel = createPanel(inputList, new GridLayout(inputList.size(),1));
+
+
 
         this.add(inputPanel);
         this.add(buttonsPanel);
+    }
+
+    private void switchView(){
+        LoginFrame.switchToRegisterView();
     }
 }
