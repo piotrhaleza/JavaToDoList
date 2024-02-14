@@ -2,17 +2,10 @@ package Frames;
 
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import Inputs.InputWithPlaceholder;
 import Panels.Auth.LoginPanel;
 import Panels.Auth.RegisterPanel;
-import org.intellij.lang.annotations.Flow;
+
 
 
 public class LoginFrame extends AbstractFrame {

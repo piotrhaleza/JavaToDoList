@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 
 
 //CustomInput class gives the ability to create JTextComponents and inherited with dynamic placeholders.
-//Constructor accepts argument as Parent Class -> JTextComponent and then its
 public class InputWithPlaceholder<T extends JTextComponent>{
 
     private static final char DEFAULT_ECHO_CHAR = (char) 0;
@@ -41,6 +40,8 @@ public class InputWithPlaceholder<T extends JTextComponent>{
 
         // Set listener to detect if user changed the input manually
        addKeyListenerToInput();
+
+       //Set listener to detect Focus on input and adjust placeholder accordingly
        addFocusListenerToInput();
 
     }

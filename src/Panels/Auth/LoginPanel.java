@@ -3,7 +3,6 @@ package Panels.Auth;
 import Frames.LoginFrame;
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;

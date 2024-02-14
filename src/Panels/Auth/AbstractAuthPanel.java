@@ -1,10 +1,11 @@
 package Panels.Auth;
 
-import Inputs.InputWithPlaceholder;
-import Panels.Utilities.ComponentUtils;
+
+
+
+import Utilities.ComponentUtils;
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.util.ArrayList;
 

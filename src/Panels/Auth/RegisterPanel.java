@@ -1,10 +1,9 @@
 package Panels.Auth;
 
 import Frames.LoginFrame;
-import Panels.Utilities.ComponentUtils;
+
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +39,7 @@ public class RegisterPanel extends AbstractAuthPanel{
 
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
 
+        //Order in this ArrayList is important
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
         buttonsPanel = createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
 
@@ -47,8 +47,12 @@ public class RegisterPanel extends AbstractAuthPanel{
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
         repeatPasswordInput = createPasswordField("Powtórz hasło");
+
+        //Order in this ArrayList is important
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput,repeatPasswordInput));
         inputPanel = createPanel(inputList, new GridLayout(inputList.size(),1));
+
+        //Add created Panels to main AuthPanel
         this.add(inputPanel);
         this.add(buttonsPanel);
 

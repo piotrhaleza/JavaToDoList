@@ -1,4 +1,4 @@
-package Panels.Utilities;
+package Utilities;
 
 import Inputs.InputWithPlaceholder;
 
