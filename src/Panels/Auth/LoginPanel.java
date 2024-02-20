@@ -13,19 +13,25 @@ public class LoginPanel extends AbstractAuthPanel{
     private final int GRID_LAYOUT_COLS = 1;
     private IBtnEventHandler eventHandler;
 
-    public LoginPanel(){
+    private final LoginFrame loginFrame;
 
+    public LoginPanel(LoginFrame loginFrame){
+
+        //Constructor requires the frame on which the methods should be executed
+        eventHandler = new LoginPanelEvents(loginFrame);
+        this.loginFrame = loginFrame;
         createPanel();
-        eventHandler = new LoginPanelEvents();
     }
 
     //Constructor with custom inputs size
-    public LoginPanel(Dimension dimension){
+    public LoginPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
+        this.loginFrame = loginFrame;
         createPanel();
     }
     //Constructor for hypothetical case when someone wanted to use different event handler
-    public LoginPanel(IBtnEventHandler eventHandler){
+    public LoginPanel(IBtnEventHandler eventHandler, LoginFrame loginFrame){
+        this.loginFrame=loginFrame;
         this.eventHandler = eventHandler;
     }
 
@@ -48,7 +54,7 @@ public class LoginPanel extends AbstractAuthPanel{
         buttonsPanel = createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
 
 
-        //Create Panel with imputs from AbstractAuthPanel function
+        //Create Panel with inputs from AbstractAuthPanel function
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));

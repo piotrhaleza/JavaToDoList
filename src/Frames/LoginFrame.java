@@ -10,10 +10,10 @@ import Panels.Auth.RegisterPanel;
 
 public class LoginFrame extends AbstractFrame {
 
-    private static final String loginView = "LoginPanel";
-    private static final String registerView = "RegisterPanel";
-    static CardLayout cl;
-    static JPanel containerPanel;
+    private  final String loginView = "LoginPanel";
+    private  final String registerView = "RegisterPanel";
+     CardLayout cl;
+     JPanel containerPanel;
 
 
     public LoginFrame(){}
@@ -23,9 +23,9 @@ public class LoginFrame extends AbstractFrame {
 
         containerPanel = new JPanel();
         containerPanel.setLayout(cl);
-        containerPanel.add(new LoginPanel(), loginView);
+        containerPanel.add(new LoginPanel(this), loginView);
 
-        containerPanel.add(new RegisterPanel(), registerView);
+        containerPanel.add(new RegisterPanel(this), registerView);
 
         cl.show(containerPanel, loginView);
 
@@ -42,10 +42,10 @@ public class LoginFrame extends AbstractFrame {
 
     }
 
-    public static void switchToLoginView(){
+    public  void switchToLoginView(){
         cl.show(containerPanel, loginView);
     }
-    public static void switchToRegisterView(){
+    public  void switchToRegisterView(){
         cl.show(containerPanel, registerView);
 
     }

@@ -16,20 +16,28 @@ public class RegisterPanel extends AbstractAuthPanel{
 
     private IBtnEventHandler eventHandler;
 
-    public RegisterPanel(){
+    private final LoginFrame loginFrame;
+
+    public RegisterPanel(LoginFrame loginFrame){
+
+        //Constructor requires the frame on which methods should be executed
+        eventHandler = new RegisterPanelEvents(loginFrame);
+        this.loginFrame=loginFrame;
         createPanel();
-        eventHandler = new RegisterPanelEvents();
+
     }
 
     //Constructor with custom inputs size
-    public RegisterPanel(Dimension dimension){
+    public RegisterPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
+        this.loginFrame=loginFrame;
         createPanel();
     }
 
     //Constructor for hypothetical case when someone wanted to use different event handler
-    public RegisterPanel(IBtnEventHandler eventHandler){
+    public RegisterPanel(IBtnEventHandler eventHandler, LoginFrame loginFrame){
         this.eventHandler = eventHandler;
+        this.loginFrame=loginFrame;
     }
     private void createPanel(){
 
