@@ -14,8 +14,11 @@ public class RegisterPanel extends AbstractAuthPanel{
     private final int GRID_LAYOUT_COLS = 1;
     private JPasswordField repeatPasswordInput;
 
+    private IBtnEventHandler eventHandler;
+
     public RegisterPanel(){
         createPanel();
+        eventHandler = new RegisterPanelEvents();
     }
 
     //Constructor with custom inputs size
@@ -24,8 +27,13 @@ public class RegisterPanel extends AbstractAuthPanel{
         createPanel();
     }
 
+    //Constructor for hypothetical case when someone wanted to use different event handler
+    public RegisterPanel(IBtnEventHandler eventHandler){
+        this.eventHandler = eventHandler;
+    }
     private void createPanel(){
 
+        //UI creation logic
         this.setLayout(new GridLayout(GRID_LAYOUT_ROWS,GRID_LAYOUT_COLS));
 
         //Set up buttons
@@ -34,12 +42,13 @@ public class RegisterPanel extends AbstractAuthPanel{
 
         switchFormBtn = new JButton("Posiadasz już konto? Zaloguj się");
         //Switch the LoginFrame view to login panel
-        switchFormBtn.addActionListener(e -> switchView());
+        switchFormBtn.addActionListener(e -> eventHandler.switchView());
 
 
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
 
         //Order in this ArrayList is important
+        //Create Panel with buttons from AbstractAuthPanel function
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
         buttonsPanel = createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
 
@@ -49,6 +58,7 @@ public class RegisterPanel extends AbstractAuthPanel{
         repeatPasswordInput = createPasswordField("Powtórz hasło");
 
         //Order in this ArrayList is important
+        //Create Panel with inputs from AbstractAuthPanel function
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput,repeatPasswordInput));
         inputPanel = createPanel(inputList, new GridLayout(inputList.size(),1));
 
@@ -59,9 +69,6 @@ public class RegisterPanel extends AbstractAuthPanel{
 
     }
 
-    private void switchView(){
-        LoginFrame.switchToLoginView();
-    }
 
 
 }

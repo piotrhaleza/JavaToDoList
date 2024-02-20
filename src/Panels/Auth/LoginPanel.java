@@ -11,9 +11,12 @@ public class LoginPanel extends AbstractAuthPanel{
 
     private final int GRID_LAYOUT_ROWS = 2;
     private final int GRID_LAYOUT_COLS = 1;
+    private IBtnEventHandler eventHandler;
 
     public LoginPanel(){
+
         createPanel();
+        eventHandler = new LoginPanelEvents();
     }
 
     //Constructor with custom inputs size
@@ -21,21 +24,31 @@ public class LoginPanel extends AbstractAuthPanel{
         super(dimension);
         createPanel();
     }
+    //Constructor for hypothetical case when someone wanted to use different event handler
+    public LoginPanel(IBtnEventHandler eventHandler){
+        this.eventHandler = eventHandler;
+    }
 
     private void createPanel(){
 
+        // UI creation logic
         this.setLayout(new GridLayout(GRID_LAYOUT_ROWS, GRID_LAYOUT_COLS));
 
         submitBtn = new JButton("Zaloguj się");
 
         switchFormBtn = new JButton("Zarejestruj się");
+
         //Switch the LoginFrame view to register panel
-        switchFormBtn.addActionListener(e -> switchView());
+        switchFormBtn.addActionListener(e -> eventHandler.switchView());
 
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
+
+        //Create Panel with buttons from AbstractAuthPanel function
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
         buttonsPanel = createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
 
+
+        //Create Panel with imputs from AbstractAuthPanel function
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
@@ -45,9 +58,5 @@ public class LoginPanel extends AbstractAuthPanel{
 
         this.add(inputPanel);
         this.add(buttonsPanel);
-    }
-
-    private void switchView(){
-        LoginFrame.switchToRegisterView();
     }
 }

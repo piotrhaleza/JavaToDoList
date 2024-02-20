@@ -53,5 +53,10 @@ public abstract class AbstractAuthPanel extends JPanel {
         return ComponentUtils.createPanel(list,layoutManager);
     }
 
+    //Class that provides the implementation of IBtnEventHandler functions based on constructor argument, which will be used in LoginPalel, RegisterPanel
+    protected class BtnEventHandler{
+        BtnEventHandler(IBtnEventHandler eventHandler){
 
+        }
+    }
 }

@@ -17,7 +17,7 @@ public class LoginFrame extends AbstractFrame {
 
 
     public LoginFrame(){}
-    public LoginFrame(String title){
+        public LoginFrame(String title){
         super(title);
         cl = new CardLayout();
 
@@ -44,7 +44,6 @@ public class LoginFrame extends AbstractFrame {
 
     public static void switchToLoginView(){
         cl.show(containerPanel, loginView);
-
     }
     public static void switchToRegisterView(){
         cl.show(containerPanel, registerView);
