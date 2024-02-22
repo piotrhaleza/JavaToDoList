@@ -1,6 +1,6 @@
-package Panels.Auth;
+package Main.Panels.Auth;
 
-import Frames.LoginFrame;
+import Main.Frames.LoginFrame;
 
 
 import javax.swing.*;
@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RegisterPanel extends AbstractAuthPanel{
+public class RegisterPanel extends AbstractAuthPanel {
 
     private final int GRID_LAYOUT_ROWS = 2;
     private final int GRID_LAYOUT_COLS = 1;

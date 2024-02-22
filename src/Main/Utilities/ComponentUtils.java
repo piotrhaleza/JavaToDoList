@@ -1,6 +1,6 @@
-package Utilities;
+package Main.Utilities;
 
-import Inputs.InputWithPlaceholder;
+import Main.Inputs.InputWithPlaceholder;
 
 import javax.swing.*;
 import java.awt.*;

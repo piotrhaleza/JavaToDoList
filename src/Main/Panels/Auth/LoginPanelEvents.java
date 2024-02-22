@@ -1,8 +1,6 @@
-package Panels.Auth;
+package Main.Panels.Auth;
 
-import Frames.LoginFrame;
-
-import javax.swing.*;
+import Main.Frames.LoginFrame;
 
 
 //*Class created only to provide implementations for BtnHandlers on AuthPanel*/

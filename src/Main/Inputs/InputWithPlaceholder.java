@@ -1,4 +1,4 @@
-package Inputs;
+package Main.Inputs;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;

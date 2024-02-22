@@ -1,9 +1,9 @@
-package Panels.Auth;
+package Main.Panels.Auth;
 
 
 
 
-import Utilities.ComponentUtils;
+import Main.Utilities.ComponentUtils;
 
 import javax.swing.*;
 import java.awt.*;

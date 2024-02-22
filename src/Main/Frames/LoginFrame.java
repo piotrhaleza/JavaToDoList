@@ -1,10 +1,12 @@
-package Frames;
+package Main.Frames;
 
 
 import javax.swing.*;
 import java.awt.*;
-import Panels.Auth.LoginPanel;
-import Panels.Auth.RegisterPanel;
+
+import Main.Frames.AbstractFrame;
+import Main.Panels.Auth.LoginPanel;
+import Main.Panels.Auth.RegisterPanel;
 
 
 
@@ -47,7 +49,6 @@ public class LoginFrame extends AbstractFrame {
     }
     public  void switchToRegisterView(){
         cl.show(containerPanel, registerView);
-
     }
 
 

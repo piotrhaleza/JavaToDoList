@@ -1,4 +1,4 @@
-package Panels.Auth;
+package Main.Panels.Auth;
 
 public interface IBtnEventHandler {
     void switchView();
