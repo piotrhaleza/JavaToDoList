@@ -28,7 +28,7 @@ public class DatabaseHandler {
     }
 
     //Function that allows only 1 connection to the database
-    private void connect(){
+    public void connect(){
             try {
                 //Load JDBC Driver
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -76,13 +76,19 @@ public class DatabaseHandler {
         }
     }
 
+    // Create properties for database connection
     private Properties loadProperties() {
         Properties properties = new Properties();
-        try (InputStream input = DatabaseHandler.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
+        try (InputStream input = getInput()) {
             properties.load(input);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return properties;
+    }
+
+    //Get configuration files as stream
+    private InputStream getInput(){
+        return DatabaseHandler.class.getClassLoader().getResourceAsStream(CONFIG_FILE);
     }
 }

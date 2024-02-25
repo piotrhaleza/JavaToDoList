@@ -10,7 +10,8 @@ public class Main {
     public static void main(String[] args) {
         //Creating Main loginFrame instance
         new LoginFrame("Formularz logowania");
-
+        DatabaseHandler handler = DatabaseHandler.getInstance();
+        //handler.connect();
     }
 
 
