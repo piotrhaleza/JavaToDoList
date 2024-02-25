@@ -15,9 +15,11 @@ public class LoginPanel extends AbstractAuthPanel {
 
     //private final LoginFrame loginFrame;
 
+
+    //Constructor requires the frame on which the methods should be executed
     public LoginPanel(LoginFrame loginFrame){
 
-        //Constructor requires the frame on which the methods should be executed
+
         eventHandler = new LoginPanelEvents(loginFrame);
        // this.loginFrame = loginFrame;
         createPanel();
