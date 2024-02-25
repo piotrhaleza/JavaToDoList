@@ -1,9 +1,9 @@
-#Java Swing To-Do List Application
+# Java Swing To-Do List Application
 
-##Overview
+## Overview
 This Java Swing To-Do List Application is a desktop application designed to help users manage their tasks efficiently. It incorporates a user-friendly graphical user interface (GUI) and utilizes unit tests for robust code validation. Additionally, the application integrates with a database to store and retrieve task data, providing a seamless and persistent user experience.
 
-##Features
+## Features
 User-Friendly GUI: The application provides an intuitive and visually appealing interface for users to manage their to-do lists.
 
 Task Management: Users can add, edit, delete, and mark tasks as completed. The application allows for easy organization and prioritization of tasks.
