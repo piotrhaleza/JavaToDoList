@@ -29,3 +29,9 @@ bin/
 .DS_Store
 
 Jenkins
+
+mysql-connector-j-8.0.33.jar
+
+src/config/config.properties
+
+
