@@ -98,6 +98,7 @@ public class InputWithPlaceholder<T extends JTextComponent>{
     }
 
 
+    //Getter for the created and customized component
     private T getInputComponent() {
         return inputComponent;
     }
