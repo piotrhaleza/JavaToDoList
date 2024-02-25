@@ -1,5 +1,6 @@
 package Main.Database;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -10,26 +11,33 @@ import java.util.Properties;
 public class DatabaseHandler {
 
     private static final String CONFIG_FILE = "db_config.properties";
-    private static Connection connection;
+    private static DatabaseHandler instance;
+    private Connection connection;
 
+
+
+
+    private DatabaseHandler(){
+        //Default private constructor that prevents external class initialization
+    }
+    public static DatabaseHandler getInstance() {
+        if (instance == null) {
+            instance = new DatabaseHandler();
+        }
+        return instance;
+    }
 
     //Function that allows only 1 connection to the database
-    private static void connect(){
-        if(connection == null){
+    private void connect(){
             try {
                 //Load JDBC Driver
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 // Read configuration from properties file
-                Properties properties = new Properties();
-                try (InputStream input = DatabaseHandler.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
-                    properties.load(input);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
                 // Establish a connection
                 try {
+                    Properties properties = loadProperties();
                     connection = DriverManager.getConnection(
                             properties.getProperty("db.url"),
                             properties.getProperty("db.username"),
@@ -43,7 +51,6 @@ public class DatabaseHandler {
             catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
-        }
 
     }
 
@@ -59,7 +66,7 @@ public class DatabaseHandler {
 //        return resultSet;
 //    }
 
-    public static void closeConnection(){
+    public void closeConnection(){
         if(connection!=null){
             try {
                 connection.close();
@@ -67,5 +74,15 @@ public class DatabaseHandler {
                 e.printStackTrace();
             }
         }
+    }
+
+    private Properties loadProperties() {
+        Properties properties = new Properties();
+        try (InputStream input = DatabaseHandler.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
+            properties.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties;
     }
 }
