@@ -43,8 +43,15 @@ public class RegisterPanel extends AbstractAuthPanel {
 
         //UI creation logic
         this.setLayout(new GridLayout(GRID_LAYOUT_ROWS,GRID_LAYOUT_COLS));
+        //Add created Panels to main AuthPanel
+        this.add(createInputPanel());
+        this.add(createBtnPanel());
 
-        //Set up buttons
+
+    }
+
+    private JPanel createBtnPanel(){
+        //Create Panel with inputs from AbstractAuthPanel function
         submitBtn = new JButton("Stwórz konto");
 
 
@@ -54,12 +61,11 @@ public class RegisterPanel extends AbstractAuthPanel {
 
 
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
-
-        //Order in this ArrayList is important
         //Create Panel with buttons from AbstractAuthPanel function
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
-        buttonsPanel = createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
-
+        return createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
+    }
+    private JPanel createInputPanel(){
         //Set up inputs
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
@@ -68,15 +74,7 @@ public class RegisterPanel extends AbstractAuthPanel {
         //Order in this ArrayList is important
         //Create Panel with inputs from AbstractAuthPanel function
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput,repeatPasswordInput));
-        inputPanel = createPanel(inputList, new GridLayout(inputList.size(),1));
-
-        //Add created Panels to main AuthPanel
-        this.add(inputPanel);
-        this.add(buttonsPanel);
-
-
+        return createPanel(inputList, new GridLayout(inputList.size(),1));
     }
-
-
 
 }
