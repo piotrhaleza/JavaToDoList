@@ -11,7 +11,8 @@ public class Main {
         //Creating Main loginFrame instance
         new LoginFrame("Formularz logowania");
         DatabaseHandler handler = DatabaseHandler.getInstance();
-        //handler.connect();
+        handler.connect();
+       // handler.closeConnection();
     }
 
 

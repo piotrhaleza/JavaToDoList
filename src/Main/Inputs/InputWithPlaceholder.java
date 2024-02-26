@@ -28,6 +28,7 @@ public class InputWithPlaceholder<T extends JTextComponent>{
         if(placeholder.isEmpty()){
             throw new IllegalArgumentException("Placeholder cannot be empty");
         }
+
         this.inputComponent = inputComponent;
         this.inputChanged = false;
         this.placeholder = placeholder;

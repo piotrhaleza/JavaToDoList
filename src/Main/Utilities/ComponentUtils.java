@@ -26,7 +26,7 @@ public class ComponentUtils {
         return passwordField;
     }
 
-    //Method to customize the specific input, currently only the dimension and text align
+    //Method to customize the specific input, currently only the dimension and center text align
     public static void customizeInputField(JTextField field, Dimension dimension) {
         field.setPreferredSize(dimension);
         field.setHorizontalAlignment(SwingConstants.CENTER);

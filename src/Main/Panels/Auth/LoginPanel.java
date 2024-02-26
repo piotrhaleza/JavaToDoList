@@ -32,6 +32,7 @@ public class LoginPanel extends AbstractAuthPanel {
         eventHandler = new LoginPanelEvents(loginFrame);
         createPanel();
     }
+
     //Constructor for hypothetical case when someone wanted to use different event handler
     public LoginPanel(IBtnEventHandler eventHandler, LoginFrame loginFrame){
        // this.loginFrame=loginFrame;
@@ -40,10 +41,20 @@ public class LoginPanel extends AbstractAuthPanel {
     }
 
     private void createPanel(){
-
         // UI creation logic
         this.setLayout(new GridLayout(GRID_LAYOUT_ROWS, GRID_LAYOUT_COLS));
+        this.add(createInputPanel());
+        this.add(createBtnPanel());
+    }
 
+    private JPanel createInputPanel(){
+        //Create Panel with inputs from AbstractAuthPanel function
+        loginInput = createTextField("Login");
+        passwordInput = createPasswordField("Hasło");
+        ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
+        return createPanel(inputList, new GridLayout(inputList.size(),1));
+    }
+    private JPanel createBtnPanel(){
         submitBtn = new JButton("Zaloguj się");
 
         switchFormBtn = new JButton("Zarejestruj się");
@@ -55,18 +66,6 @@ public class LoginPanel extends AbstractAuthPanel {
 
         //Create Panel with buttons from AbstractAuthPanel function
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
-        buttonsPanel = createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
-
-
-        //Create Panel with inputs from AbstractAuthPanel function
-        loginInput = createTextField("Login");
-        passwordInput = createPasswordField("Hasło");
-        ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
-        inputPanel = createPanel(inputList, new GridLayout(inputList.size(),1));
-
-
-
-        this.add(inputPanel);
-        this.add(buttonsPanel);
+        return createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
     }
 }

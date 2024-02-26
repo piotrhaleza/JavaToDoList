@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class DatabaseHandler {
 
-    private static final String CONFIG_FILE = "db_config.properties";
+    private static final String CONFIG_FILE = "config/db_config.properties";
     private static DatabaseHandler instance;
     private Connection connection;
 
@@ -70,6 +70,9 @@ public class DatabaseHandler {
         if(connection!=null){
             try {
                 connection.close();
+                //test purpose
+                connection = null;
+
             }catch(SQLException e){
                 e.printStackTrace();
             }
