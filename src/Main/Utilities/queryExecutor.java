@@ -17,15 +17,14 @@ public class queryExecutor {
      * @param sql    The SQL statement to be executed.
      * @param params The parameters to be set in the prepared statement.
      */
-    public static void executeStatement(String sql, Object... params){
-
-        Connection connection = getDbConnection();
-
+    public static void executeStatement(String sql, Object... params) throws IllegalArgumentException{
         if(countPlaceholders(sql) != params.length){
             throw new IllegalArgumentException(
                     "Invalid number of parameters. Expected: " + countPlaceholders(sql) + ", Actual: " + params.length
             );
         }
+
+        Connection connection = getDbConnection();
 
         //try-with-resources for preparedStatement
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -46,7 +45,7 @@ public class queryExecutor {
      * @param params            The parameters to set.
      * @throws IllegalArgumentException If the length of params does not match the number of placeholders.
      */
-    private static void setParams(PreparedStatement preparedStatement, Object... params) throws IllegalArgumentException{
+    private static void setParams(PreparedStatement preparedStatement, Object... params){
 
         for(int i =0; i<params.length;++i){
             try{

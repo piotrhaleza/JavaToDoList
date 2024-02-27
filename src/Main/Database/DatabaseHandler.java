@@ -83,7 +83,6 @@ public class DatabaseHandler {
         }
     }
 
-
     public Connection getConnection(){
         return connection;
     }
