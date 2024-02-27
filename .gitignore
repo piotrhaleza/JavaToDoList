@@ -33,5 +33,6 @@ Jenkins
 mysql-connector-j-8.0.33.jar
 
 src/config/db_config.properties
+.idea
 
 

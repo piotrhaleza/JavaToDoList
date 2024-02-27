@@ -12,7 +12,11 @@ import java.util.Properties;
 
 public class DatabaseHandler {
 
+
+    //Path to file with database properties format
     private static final String CONFIG_FILE = "config/db_config.properties";
+
+    //Singleton instance
     private static DatabaseHandler instance;
     private Connection connection;
 
@@ -79,8 +83,10 @@ public class DatabaseHandler {
         }
     }
 
-    //Test purposes
+
     public Connection getConnection(){
         return connection;
     }
+
+
 }

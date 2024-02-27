@@ -1,16 +1,20 @@
 package Main.Utilities;
 
 import Main.Database.DatabaseHandler;
+import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesLoader {
 
-   // public PropertiesLoader(){}
 
-    public static Properties loadPropertiesFromFile(String fileName){
+
+    public static @NotNull Properties loadPropertiesFromFile(String fileName){
+        if(fileName.isEmpty()) return new Properties();
+
         try(InputStream input = loadStreamFromFile(fileName)) {
             return loadFromInputStream(input);
         }
@@ -20,13 +24,15 @@ public class PropertiesLoader {
         }
 
     }
-
-
     //Function created specifically, it would be easier to unit test the whole properties mechanism
-    public static Properties loadFromInputStream(InputStream input){
+    public static @NotNull Properties loadFromInputStream(InputStream input){
+        if(input == null) return new Properties();
+
         Properties properties = new Properties();
-        try (input) {
-            properties.load(input);
+
+        //Creating new BufferedInput, so it would be independent of the input provided.
+        try (InputStream inputStream = new BufferedInputStream(input)) {
+            properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
