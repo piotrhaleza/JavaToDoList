@@ -61,8 +61,10 @@ public class RegisterPanel extends AbstractAuthPanel {
 
 
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
+
         //Create Panel with buttons from AbstractAuthPanel function
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
+
         return createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
     }
     private JPanel createInputPanel(){
@@ -74,6 +76,7 @@ public class RegisterPanel extends AbstractAuthPanel {
         //Order in this ArrayList is important
         //Create Panel with inputs from AbstractAuthPanel function
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput,repeatPasswordInput));
+
         return createPanel(inputList, new GridLayout(inputList.size(),1));
     }
 

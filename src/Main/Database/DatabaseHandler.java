@@ -1,5 +1,7 @@
 package Main.Database;
 
+import Main.Utilities.PropertiesLoader;
+
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,8 +38,9 @@ public class DatabaseHandler {
                 // Read configuration from properties file
 
                 // Establish a connection
+                //PropertiesLoader is external utility class created only to load properties from files or streams
                 try {
-                    Properties properties = loadProperties();
+                    Properties properties = PropertiesLoader.loadPropertiesFromFile(CONFIG_FILE);
                     connection = DriverManager.getConnection(
                             properties.getProperty("db.url"),
                             properties.getProperty("db.username"),
@@ -70,28 +73,14 @@ public class DatabaseHandler {
         if(connection!=null){
             try {
                 connection.close();
-                //test purpose
-                connection = null;
-
             }catch(SQLException e){
                 e.printStackTrace();
             }
         }
     }
 
-    // Create properties for database connection
-    private Properties loadProperties() {
-        Properties properties = new Properties();
-        try (InputStream input = getInput()) {
-            properties.load(input);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return properties;
-    }
-
-    //Get configuration files as stream
-    private InputStream getInput(){
-        return DatabaseHandler.class.getClassLoader().getResourceAsStream(CONFIG_FILE);
+    //Test purposes
+    public Connection getConnection(){
+        return connection;
     }
 }
