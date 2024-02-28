@@ -13,4 +13,6 @@ public class RegisterPanelEvents implements IBtnEventHandler {
     public void switchView(){
         loginFrame.switchToLoginView();
     }
+
+
 }

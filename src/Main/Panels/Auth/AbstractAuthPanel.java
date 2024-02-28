@@ -26,6 +26,7 @@ public abstract class AbstractAuthPanel extends JPanel {
     protected JButton switchFormBtn;
     protected JButton continueAsGuestBtn;
 
+
     protected AbstractAuthPanel(){
         inputDimension = new Dimension(250, 40);
     }

@@ -61,17 +61,6 @@ public class DatabaseHandler {
 
     }
 
-//    public static ResultSet queryBuilder(String s){
-//        connect();
-//        ResultSet resultSet = null;
-//        try{
-//            Statement statement = connection.createStatement();
-//            resultSet = statement.executeQuery(s);
-//            connection.close();
-//        }catch(SQLException e){ e.printStackTrace();}
-//
-//        return resultSet;
-//    }
 
     public void closeConnection(){
         if(connection!=null){

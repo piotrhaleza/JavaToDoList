@@ -13,8 +13,10 @@ public class RegisterPanel extends AbstractAuthPanel {
     private final int GRID_LAYOUT_ROWS = 2;
     private final int GRID_LAYOUT_COLS = 1;
     private JPasswordField repeatPasswordInput;
+    protected boolean submitBtnEnabled = false;
 
     private IBtnEventHandler eventHandler;
+
 
     private final LoginFrame loginFrame;
 
@@ -30,6 +32,7 @@ public class RegisterPanel extends AbstractAuthPanel {
     //Constructor with custom inputs size
     public RegisterPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
+        eventHandler = new RegisterPanelEvents(loginFrame);
         this.loginFrame=loginFrame;
         createPanel();
     }
@@ -39,6 +42,8 @@ public class RegisterPanel extends AbstractAuthPanel {
         this.eventHandler = eventHandler;
         this.loginFrame=loginFrame;
     }
+
+
     private void createPanel(){
 
         //UI creation logic
@@ -53,6 +58,7 @@ public class RegisterPanel extends AbstractAuthPanel {
     private JPanel createBtnPanel(){
         //Create Panel with inputs from AbstractAuthPanel function
         submitBtn = new JButton("Stwórz konto");
+        submitBtn.setEnabled(submitBtnEnabled);
 
 
         switchFormBtn = new JButton("Posiadasz już konto? Zaloguj się");
@@ -70,7 +76,7 @@ public class RegisterPanel extends AbstractAuthPanel {
     private JPanel createInputPanel(){
         //Set up inputs
         loginInput = createTextField("Login");
-        passwordInput = createPasswordField("Hasło");
+        passwordInput = createPasswordField("Hasło (Minimum 8 znaków)");
         repeatPasswordInput = createPasswordField("Powtórz hasło");
 
         //Order in this ArrayList is important
