@@ -34,7 +34,7 @@ public class LoginPanel extends AbstractAuthPanel {
     }
 
     //Constructor for hypothetical case when someone wanted to use different event handler
-    public LoginPanel(IBtnEventHandler eventHandler, LoginFrame loginFrame){
+    public LoginPanel(IBtnEventHandler eventHandler){
        // this.loginFrame=loginFrame;
         this.eventHandler = eventHandler;
         createPanel();
@@ -51,21 +51,26 @@ public class LoginPanel extends AbstractAuthPanel {
         //Create Panel with inputs from AbstractAuthPanel function
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
+
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
-        return createPanel(inputList, new GridLayout(inputList.size(),1));
+        LayoutManager layout = new GridLayout(inputList.size(), 1);
+
+        return super.createPanel(inputList, layout);
     }
     private JPanel createBtnPanel(){
         submitBtn = new JButton("Zaloguj się");
 
-        switchFormBtn = new JButton("Zarejestruj się");
-
         //Switch the LoginFrame view to register panel
-        switchFormBtn.addActionListener(e -> eventHandler.switchView());
+        switchFormBtn = createBtn("Zarejestruj się", e -> eventHandler.switchView());
+
+
 
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
 
         //Create Panel with buttons from AbstractAuthPanel function
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
-        return createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
+        LayoutManager layout = new FlowLayout(FlowLayout.CENTER,5,5);
+
+        return super.createPanel(btnList, layout);
     }
 }

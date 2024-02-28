@@ -18,13 +18,13 @@ public class RegisterPanel extends AbstractAuthPanel {
     private IBtnEventHandler eventHandler;
 
 
-    private final LoginFrame loginFrame;
+  //  private final LoginFrame loginFrame;
 
     public RegisterPanel(LoginFrame loginFrame){
 
         //Constructor requires the frame on which methods should be executed
         eventHandler = new RegisterPanelEvents(loginFrame);
-        this.loginFrame=loginFrame;
+       // this.loginFrame=loginFrame;
         createPanel();
 
     }
@@ -33,14 +33,14 @@ public class RegisterPanel extends AbstractAuthPanel {
     public RegisterPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
         eventHandler = new RegisterPanelEvents(loginFrame);
-        this.loginFrame=loginFrame;
+        //this.loginFrame=loginFrame;
         createPanel();
     }
 
     //Constructor for hypothetical case when someone wanted to use different event handler
-    public RegisterPanel(IBtnEventHandler eventHandler, LoginFrame loginFrame){
+    public RegisterPanel(IBtnEventHandler eventHandler){
         this.eventHandler = eventHandler;
-        this.loginFrame=loginFrame;
+        //this.loginFrame=loginFrame;
     }
 
 
@@ -60,10 +60,8 @@ public class RegisterPanel extends AbstractAuthPanel {
         submitBtn = new JButton("Stwórz konto");
         submitBtn.setEnabled(submitBtnEnabled);
 
-
-        switchFormBtn = new JButton("Posiadasz już konto? Zaloguj się");
         //Switch the LoginFrame view to login panel
-        switchFormBtn.addActionListener(e -> eventHandler.switchView());
+        switchFormBtn = createBtn("Posiadasz już konto? Zaloguj się", e -> eventHandler.switchView());
 
 
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
