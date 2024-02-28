@@ -69,7 +69,7 @@ public class RegisterPanel extends AbstractAuthPanel {
         //Create Panel with buttons from AbstractAuthPanel function
         ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
 
-        return createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
+        return super.createPanel(btnList, new FlowLayout(FlowLayout.CENTER,5,5));
     }
     private JPanel createInputPanel(){
         //Set up inputs
@@ -81,7 +81,7 @@ public class RegisterPanel extends AbstractAuthPanel {
         //Create Panel with inputs from AbstractAuthPanel function
         ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput,repeatPasswordInput));
 
-        return createPanel(inputList, new GridLayout(inputList.size(),1));
+        return super.createPanel(inputList, new GridLayout(inputList.size(),1));
     }
 
 }
