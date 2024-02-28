@@ -50,16 +50,9 @@ public abstract class AbstractAuthPanel extends JPanel {
         ComponentUtils.customizeInputField(field,dimension);
     }
 
-    /**
-     *
-     * @param text text that will be shown on the button itself
-     * @param action override method from ActionListener interface in that case "onClick"
-     * @return created button with the onClick event implemented
-     */
+
     protected JButton createBtn(String text, ActionListener action){
-        JButton btn = new JButton(text);
-        btn.addActionListener(action);
-        return btn;
+        return ComponentUtils.createBtn(text, action);
     }
     protected JPanel createPanel (ArrayList<JComponent> list, LayoutManager layoutManager){
         return ComponentUtils.createPanel(list,layoutManager);

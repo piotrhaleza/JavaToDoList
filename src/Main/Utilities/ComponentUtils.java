@@ -4,6 +4,7 @@ import Main.Inputs.InputWithPlaceholder;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ComponentUtils {
@@ -40,5 +41,17 @@ public class ComponentUtils {
             panel.add(comp);
         }
         return panel;
+    }
+
+    /**
+     *
+     * @param text text that will be shown on the button itself
+     * @param action override method from ActionListener interface in that case "onClick"
+     * @return created button with the onClick event implemented
+     */
+    public static JButton createBtn(String text, ActionListener action){
+        JButton btn = new JButton(text);
+        btn.addActionListener(action);
+        return btn;
     }
 }
