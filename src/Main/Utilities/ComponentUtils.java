@@ -34,7 +34,11 @@ public class ComponentUtils {
     }
 
     //Method to create panel with JComponents, the argument is array of JComponents
-    public static JPanel createPanel(ArrayList<JComponent> components, LayoutManager layoutManager) {
+    public static JPanel createPanel(LayoutManager layoutManager,JComponent... components) {
+        if (components.length == 0) {
+            throw new IllegalArgumentException("At least one component must be provided");
+        }
+
         JPanel panel = new JPanel();
         panel.setLayout(layoutManager);
         for (JComponent comp : components) {

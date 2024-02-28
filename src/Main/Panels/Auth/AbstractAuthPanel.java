@@ -54,8 +54,8 @@ public abstract class AbstractAuthPanel extends JPanel {
     protected JButton createBtn(String text, ActionListener action){
         return ComponentUtils.createBtn(text, action);
     }
-    protected JPanel createPanel (ArrayList<JComponent> list, LayoutManager layoutManager){
-        return ComponentUtils.createPanel(list,layoutManager);
+    protected JPanel createPanel (LayoutManager layoutManager, JComponent... components){
+        return ComponentUtils.createPanel(layoutManager, components);
     }
 
     //Class that provides the implementation of IBtnEventHandler functions based on constructor argument, which will be used in LoginPalel, RegisterPanel

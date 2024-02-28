@@ -52,10 +52,10 @@ public class LoginPanel extends AbstractAuthPanel {
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
 
-        ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
-        LayoutManager layout = new GridLayout(inputList.size(), 1);
+        //ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput));
+       // LayoutManager layout = new GridLayout(inputList.size(), 1);
 
-        return super.createPanel(inputList, layout);
+        return super.createPanel(new GridLayout(2, 1), loginInput, passwordInput);
     }
     private JPanel createBtnPanel(){
         submitBtn = new JButton("Zaloguj się");
@@ -68,9 +68,9 @@ public class LoginPanel extends AbstractAuthPanel {
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
 
         //Create Panel with buttons from AbstractAuthPanel function
-        ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
-        LayoutManager layout = new FlowLayout(FlowLayout.CENTER,5,5);
+        //ArrayList<JComponent> btnList = new ArrayList<>(Arrays.asList(submitBtn,switchFormBtn,continueAsGuestBtn));
+        //LayoutManager layout = new FlowLayout(FlowLayout.CENTER,5,5);
 
-        return super.createPanel(btnList, layout);
+        return super.createPanel(new FlowLayout(FlowLayout.CENTER,5,5), submitBtn, switchFormBtn, continueAsGuestBtn);
     }
 }
