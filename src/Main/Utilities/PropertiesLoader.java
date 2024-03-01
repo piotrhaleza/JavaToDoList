@@ -40,6 +40,8 @@ public class PropertiesLoader {
         return properties;
     }
     public static InputStream loadStreamFromFile(String fileName){
+
+        //Using classLoader.getResourceAsStream in order to get InputStream result, which should be more flexible after building app to .jar
         return PropertiesLoader.class.getClassLoader().getResourceAsStream(fileName);
     }
 }

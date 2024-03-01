@@ -3,6 +3,7 @@ package Main.Utilities;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Base64;
 
 //This class is going to be moved to the API later on
@@ -30,7 +31,7 @@ public class PasswordHashing {
             // Get the hashed password as a byte array
             byte[] hashedBytes = messageDigest.digest();
 
-            // Convert the byte array to a base64-encoded string
+            // Convert the byte array to a base64 string
             return Base64.getEncoder().encodeToString(hashedBytes);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -40,8 +41,8 @@ public class PasswordHashing {
 
     /**
      *
-     * @param plainText String representation of password that we want to verify with hashed version
-     * @param hashedPassword String representation of hashed version of password that we want to compare the provided plainText
+     * @param plainText String that represents the password that we want to verify with hashed version
+     * @param hashedPassword String that represents the hashed version of password that we want to compare the provided plainText
      * @return Boolean value whether those passwords are the same
      */
     public static boolean verifyPassword(String plainText, String hashedPassword){

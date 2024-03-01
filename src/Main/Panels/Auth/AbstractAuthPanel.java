@@ -27,6 +27,7 @@ public abstract class AbstractAuthPanel extends JPanel {
     protected JButton switchFormBtn;
     protected JButton continueAsGuestBtn;
 
+    protected IBtnEventHandler eventHandler;
 
     protected AbstractAuthPanel(){
         inputDimension = new Dimension(250, 40);
@@ -56,12 +57,5 @@ public abstract class AbstractAuthPanel extends JPanel {
     }
     protected JPanel createPanel (LayoutManager layoutManager, JComponent... components){
         return ComponentUtils.createPanel(layoutManager, components);
-    }
-
-    //Class that provides the implementation of IBtnEventHandler functions based on constructor argument, which will be used in LoginPalel, RegisterPanel
-    protected class BtnEventHandler{
-        BtnEventHandler(IBtnEventHandler eventHandler){
-
-        }
     }
 }

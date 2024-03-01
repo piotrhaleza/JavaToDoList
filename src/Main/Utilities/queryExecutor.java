@@ -58,7 +58,7 @@ public class queryExecutor {
 
             connection.commit();  // Commit the transaction
 
-        } catch (SQLException | IllegalArgumentException e) {
+        } catch (SQLException e) {
             try {
                 connection.rollback();  // Rollback the transaction in case of an exception
             } catch (SQLException rollbackException) {
@@ -86,6 +86,9 @@ public class queryExecutor {
      */
     private static void setParams(String sql, PreparedStatement preparedStatement, Object... params) throws IllegalArgumentException{
 
+        //No need to set params if the array is empty
+        if(params==null || params.length==0) return;
+
         if(countPlaceholders(sql) != params.length){
             throw new IllegalArgumentException(
                     "Invalid number of parameters. Expected: " + countPlaceholders(sql) + ", Actual: " + params.length
@@ -98,6 +101,7 @@ public class queryExecutor {
             }
             catch(SQLException e){
                 e.printStackTrace();
+                break;
             }
         }
     }

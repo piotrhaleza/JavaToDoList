@@ -15,7 +15,6 @@ public class RegisterPanel extends AbstractAuthPanel {
     private JPasswordField repeatPasswordInput;
     protected boolean submitBtnEnabled = false;
 
-    private IBtnEventHandler eventHandler;
 
 
   //  private final LoginFrame loginFrame;
@@ -32,6 +31,8 @@ public class RegisterPanel extends AbstractAuthPanel {
     //Constructor with custom inputs size
     public RegisterPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
+
+        //Constructor requires the frame on which methods should be executed
         eventHandler = new RegisterPanelEvents(loginFrame);
         //this.loginFrame=loginFrame;
         createPanel();

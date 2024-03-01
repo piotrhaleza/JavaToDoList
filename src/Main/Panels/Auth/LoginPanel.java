@@ -11,7 +11,7 @@ public class LoginPanel extends AbstractAuthPanel {
 
     private final int GRID_LAYOUT_ROWS = 2;
     private final int GRID_LAYOUT_COLS = 1;
-    private IBtnEventHandler eventHandler;
+
 
     //private final LoginFrame loginFrame;
 
