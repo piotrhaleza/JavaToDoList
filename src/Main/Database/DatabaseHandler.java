@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.Properties;
 
 
-
+//This class is going to be moved to the API later on
 public class DatabaseHandler {
 
 

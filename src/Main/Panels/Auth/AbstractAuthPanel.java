@@ -19,8 +19,8 @@ public abstract class AbstractAuthPanel extends JPanel {
     private final Dimension inputDimension;
 
     //Things used in both Login, Register panels
-    protected JPanel inputPanel;
-    protected JPanel buttonsPanel;
+//    protected JPanel inputPanel;
+//    protected JPanel buttonsPanel;
     protected JTextField loginInput;
     protected JPasswordField passwordInput;
     protected JButton submitBtn;

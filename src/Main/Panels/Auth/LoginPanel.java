@@ -48,7 +48,6 @@ public class LoginPanel extends AbstractAuthPanel {
     }
 
     private JPanel createInputPanel(){
-        //Create Panel with inputs from AbstractAuthPanel function
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło");
 
@@ -59,12 +58,7 @@ public class LoginPanel extends AbstractAuthPanel {
     }
     private JPanel createBtnPanel(){
         submitBtn = new JButton("Zaloguj się");
-
-        //Switch the LoginFrame view to register panel
         switchFormBtn = createBtn("Zarejestruj się", e -> eventHandler.switchView());
-
-
-
         continueAsGuestBtn = new JButton("Kontynuuj jako gość");
 
         //Create Panel with buttons from AbstractAuthPanel function

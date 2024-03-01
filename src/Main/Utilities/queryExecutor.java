@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+//This class is going to be moved to the API later on
 public class queryExecutor {
 
     //Current placeholder symbol for Prepared Statements
