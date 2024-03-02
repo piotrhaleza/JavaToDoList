@@ -10,6 +10,8 @@ import java.util.Properties;
 
 
 //This class is going to be moved to the API later on
+
+// TODO: After refactoring into API, change service to the connection pool instead.
 public class DatabaseHandler {
 
 

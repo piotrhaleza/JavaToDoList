@@ -7,11 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-//This class is going to be moved to the API later on
-public class queryExecutor {
+//TODO: This class is going to be moved to the API later on
+public class QueryExecutor {
 
     //Current placeholder symbol for Prepared Statements
     private static final char PLACEHOLDER_SYMBOL = '?';
+
+    private static DatabaseHandler db = DatabaseHandler.getInstance();
+
 
     /**
      * Executes a SQL statement with the provided parameters.
@@ -29,6 +32,15 @@ public class queryExecutor {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally{
+            try{
+                connection.close();
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -109,6 +121,9 @@ public class queryExecutor {
 
     /**
      * Counts the number of placeholders in a prepared statement's SQL.
+     * Placeholders are represented by the '?' symbol. This count is important for ensuring that the
+     * number of parameters provided matches the number of placeholders when setting values in a
+     * PreparedStatement using the setParams method.
      *
      * @param sql String of prepared statement to count placeholders for.
      * @return The number of placeholders in the SQL.
@@ -128,8 +143,8 @@ public class queryExecutor {
      *
      * @return The database connection.
      */
+
     private static Connection getDbConnection(){
-        DatabaseHandler db = DatabaseHandler.getInstance();
         db.connect();
         return db.getConnection();
     }

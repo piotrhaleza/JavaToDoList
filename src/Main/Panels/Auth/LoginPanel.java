@@ -19,25 +19,27 @@ public class LoginPanel extends AbstractAuthPanel {
     //Constructor requires the frame on which the methods should be executed
     public LoginPanel(LoginFrame loginFrame){
 
-
+        createPanel();
         eventHandler = new LoginPanelEvents(loginFrame, this);
        // this.loginFrame = loginFrame;
-        createPanel();
+
     }
 
     //Constructor with custom inputs size
     public LoginPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
+        createPanel();
         //this.loginFrame = loginFrame;
         eventHandler = new LoginPanelEvents(loginFrame, this);
-        createPanel();
+
     }
 
     //Constructor for hypothetical case when someone wanted to use different event handler
     public LoginPanel(IBtnEventHandler eventHandler){
+        createPanel();
        // this.loginFrame=loginFrame;
         this.eventHandler = eventHandler;
-        createPanel();
+
     }
 
     private void createPanel(){

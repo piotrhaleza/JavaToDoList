@@ -6,6 +6,9 @@ package Main.Panels.Auth;
 import Main.Utilities.ComponentUtils;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -55,8 +58,36 @@ public abstract class AbstractAuthPanel extends JPanel {
     protected JButton createBtn(String text, ActionListener action){
         return ComponentUtils.createBtn(text, action);
     }
+
     protected JPanel createPanel (LayoutManager layoutManager, JComponent... components){
         return ComponentUtils.createPanel(layoutManager, components);
+    }
+
+    protected void addEventListenerToInputs(Runnable method, JTextComponent... components) throws IllegalArgumentException{
+        if(components==null) throw new IllegalArgumentException("Array of components cannot be null");
+        for(JTextComponent comp : components){
+            if(comp==null) throw new IllegalArgumentException("Component in an array cannot be null");
+            comp.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    //Make sure that the code runs on EDT just in case
+                    SwingUtilities.invokeLater(method);
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    //Make sure that the code runs on EDT just in case
+                    SwingUtilities.invokeLater(method);
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    //Make sure that the code runs on EDT just in case
+                    SwingUtilities.invokeLater(method);
+                }
+            });
+        }
+
     }
 
     //Getters created, so it would be easier to validate inputs in separate class

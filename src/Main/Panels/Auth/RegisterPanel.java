@@ -4,6 +4,8 @@ import Main.Frames.LoginFrame;
 
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,22 +22,24 @@ public class RegisterPanel extends AbstractAuthPanel {
   //  private final LoginFrame loginFrame;
 
     public RegisterPanel(LoginFrame loginFrame){
+        createPanel();
 
         //Constructor requires the frame on which methods should be executed and instance of RegisterPanel
         eventHandler = new RegisterPanelEvents(loginFrame, this);
        // this.loginFrame=loginFrame;
-        createPanel();
+
 
     }
 
     //Constructor with custom inputs size
     public RegisterPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
+        createPanel();
 
         //Constructor requires the frame on which methods should be executed, and instance of RegisterPanel
         eventHandler = new RegisterPanelEvents(loginFrame, this);
         //this.loginFrame=loginFrame;
-        createPanel();
+
     }
 
     //Constructor for hypothetical case when someone wanted to use different event handler
@@ -58,7 +62,7 @@ public class RegisterPanel extends AbstractAuthPanel {
 
     private JPanel createBtnPanel(){
         //Create Panel with inputs from AbstractAuthPanel function
-        submitBtn = new JButton("Stwórz konto");
+        submitBtn = createBtn("Stwórz konto", e -> eventHandler.handleSubmit());
         submitBtn.setEnabled(submitBtnEnabled);
 
         //Switch the LoginFrame view to log in panel
@@ -77,12 +81,13 @@ public class RegisterPanel extends AbstractAuthPanel {
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło (Minimum 8 znaków)");
         repeatPasswordInput = createPasswordField("Powtórz hasło");
+        addEventListenerToInputs(() -> eventHandler.validateInputs(), loginInput, passwordInput, repeatPasswordInput);
 
         //Order in this ArrayList is important
         //Create Panel with inputs from AbstractAuthPanel function
         //ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput,repeatPasswordInput));
 
-        return super.createPanel(new GridLayout(3,1), loginInput, passwordInput, repeatPasswordInput);
+        return super.createPanel(new GridLayout(3,1, 2, 2), loginInput, passwordInput, repeatPasswordInput);
     }
 
     //Getter created, so it would be easier to validate repeatPasswordInput
