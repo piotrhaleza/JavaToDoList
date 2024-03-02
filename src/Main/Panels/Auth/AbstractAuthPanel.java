@@ -58,4 +58,15 @@ public abstract class AbstractAuthPanel extends JPanel {
     protected JPanel createPanel (LayoutManager layoutManager, JComponent... components){
         return ComponentUtils.createPanel(layoutManager, components);
     }
+
+    //Getters created, so it would be easier to validate inputs in separate class
+    public JPasswordField getPasswordInput(){
+        return passwordInput;
+    }
+    public JTextField getLoginInput(){
+        return loginInput;
+    }
+    public JButton getSubmitBtn(){
+        return submitBtn;
+    }
 }

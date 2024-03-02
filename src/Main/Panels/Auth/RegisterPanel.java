@@ -13,7 +13,7 @@ public class RegisterPanel extends AbstractAuthPanel {
     private final int GRID_LAYOUT_ROWS = 2;
     private final int GRID_LAYOUT_COLS = 1;
     private JPasswordField repeatPasswordInput;
-    protected boolean submitBtnEnabled = false;
+    private boolean submitBtnEnabled = false;
 
 
 
@@ -21,8 +21,8 @@ public class RegisterPanel extends AbstractAuthPanel {
 
     public RegisterPanel(LoginFrame loginFrame){
 
-        //Constructor requires the frame on which methods should be executed
-        eventHandler = new RegisterPanelEvents(loginFrame);
+        //Constructor requires the frame on which methods should be executed and instance of RegisterPanel
+        eventHandler = new RegisterPanelEvents(loginFrame, this);
        // this.loginFrame=loginFrame;
         createPanel();
 
@@ -32,8 +32,8 @@ public class RegisterPanel extends AbstractAuthPanel {
     public RegisterPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
 
-        //Constructor requires the frame on which methods should be executed
-        eventHandler = new RegisterPanelEvents(loginFrame);
+        //Constructor requires the frame on which methods should be executed, and instance of RegisterPanel
+        eventHandler = new RegisterPanelEvents(loginFrame, this);
         //this.loginFrame=loginFrame;
         createPanel();
     }
@@ -44,11 +44,11 @@ public class RegisterPanel extends AbstractAuthPanel {
         //this.loginFrame=loginFrame;
     }
 
-
     private void createPanel(){
 
         //UI creation logic
         this.setLayout(new GridLayout(GRID_LAYOUT_ROWS,GRID_LAYOUT_COLS));
+
         //Add created Panels to main AuthPanel
         this.add(createInputPanel());
         this.add(createBtnPanel());
@@ -61,7 +61,7 @@ public class RegisterPanel extends AbstractAuthPanel {
         submitBtn = new JButton("Stwórz konto");
         submitBtn.setEnabled(submitBtnEnabled);
 
-        //Switch the LoginFrame view to login panel
+        //Switch the LoginFrame view to log in panel
         switchFormBtn = createBtn("Posiadasz już konto? Zaloguj się", e -> eventHandler.switchView());
 
 
@@ -83,6 +83,11 @@ public class RegisterPanel extends AbstractAuthPanel {
         //ArrayList<JComponent> inputList = new ArrayList<>(Arrays.asList(loginInput,passwordInput,repeatPasswordInput));
 
         return super.createPanel(new GridLayout(3,1), loginInput, passwordInput, repeatPasswordInput);
+    }
+
+    //Getter created, so it would be easier to validate repeatPasswordInput
+    public JPasswordField getRepeatPasswordInput(){
+        return repeatPasswordInput;
     }
 
 }

@@ -20,7 +20,7 @@ public class LoginPanel extends AbstractAuthPanel {
     public LoginPanel(LoginFrame loginFrame){
 
 
-        eventHandler = new LoginPanelEvents(loginFrame);
+        eventHandler = new LoginPanelEvents(loginFrame, this);
        // this.loginFrame = loginFrame;
         createPanel();
     }
@@ -29,7 +29,7 @@ public class LoginPanel extends AbstractAuthPanel {
     public LoginPanel(Dimension dimension, LoginFrame loginFrame){
         super(dimension);
         //this.loginFrame = loginFrame;
-        eventHandler = new LoginPanelEvents(loginFrame);
+        eventHandler = new LoginPanelEvents(loginFrame, this);
         createPanel();
     }
 
