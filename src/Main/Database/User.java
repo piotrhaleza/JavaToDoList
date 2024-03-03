@@ -8,7 +8,7 @@ public class User {
     String username;
 
     //necessary empty constructor
-    protected User(){}
+    public User(){}
     protected User(int id, String username){
         this.id = id;
         this.username = username;

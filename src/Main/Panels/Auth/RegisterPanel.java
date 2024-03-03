@@ -81,7 +81,7 @@ public class RegisterPanel extends AbstractAuthPanel {
         loginInput = createTextField("Login");
         passwordInput = createPasswordField("Hasło (Minimum 8 znaków)");
         repeatPasswordInput = createPasswordField("Powtórz hasło");
-        addEventListenerToInputs(() -> eventHandler.validateInputs(), loginInput, passwordInput, repeatPasswordInput);
+        addEventListenerToInputs(() -> eventHandler.debounceValidateInputs(250), loginInput, passwordInput, repeatPasswordInput);
 
         //Order in this ArrayList is important
         //Create Panel with inputs from AbstractAuthPanel function

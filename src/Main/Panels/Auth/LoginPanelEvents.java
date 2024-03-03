@@ -33,13 +33,17 @@ public class LoginPanelEvents implements IBtnEventHandler {
     @Override
     public void handleSubmit() {
         if(validateInputs()){
-
+            //TODO: Send API request to authenticate the user, and put that into User class
         }
     }
 
     @Override
     public boolean validateInputs() {
         return username.length() <= MAX_INPUT_LENGTH && password.length <= MAX_INPUT_LENGTH;
+    }
+    @Override
+    public void debounceValidateInputs(int time){
+        return;
     }
 
 

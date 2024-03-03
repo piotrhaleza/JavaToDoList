@@ -5,4 +5,5 @@ public interface IBtnEventHandler {
 
     void handleSubmit();
     boolean validateInputs();
+    void debounceValidateInputs(int time);
 }

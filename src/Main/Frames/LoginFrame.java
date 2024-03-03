@@ -4,6 +4,7 @@ package Main.Frames;
 import javax.swing.*;
 import java.awt.*;
 
+import Main.Database.User;
 import Main.Frames.AbstractFrame;
 import Main.Panels.Auth.LoginPanel;
 import Main.Panels.Auth.RegisterPanel;
@@ -49,6 +50,10 @@ public class LoginFrame extends AbstractFrame {
     }
     public  void switchToRegisterView(){
         cl.show(containerPanel, registerView);
+    }
+
+    public void handleSuccesfullAuthentication(User user){
+        this.dispose();
     }
 
 
