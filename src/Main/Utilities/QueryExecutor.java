@@ -6,7 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+//to powinno byc public static class bo it ak wszystko tu jest statyczne. i jeśli chodzi o bazy to sprawdz "jpa java" ja uzywam entity framework ale to w c# ale zamysl ten sam zamienias sql na obiekty bo ty chyba dostajesz stringi a to nie potrzenbe utrudnienie
 //TODO: This class is going to be moved to the API later on
 public class QueryExecutor {
 
