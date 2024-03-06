@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
 
+//PH: to raczej powinen byc interfejs bo jak ci sie zachce innaczej kodowac to co nowa metoda raczej bez sensu
 //This class is going to be moved to the API later on
 public class PasswordHashing {
 
